@@ -3,448 +3,601 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>星魂印記｜電影感牌卡募資影片拍攝腳本</title>
+  <title>Functional Training 手機菜單</title>
   <style>
     :root {
-      --bg: #f7f2ec;
-      --paper: #fffaf4;
-      --ink: #2b2623;
-      --muted: #7b6f66;
-      --line: #ded1c5;
-      --accent: #9b7b5f;
-      --soft: #efe4d8;
+      --bg: #f7f3ec;
+      --card: #ffffff;
+      --text: #2f2a25;
+      --muted: #77706a;
+      --line: #e2d8cc;
+      --accent: #8f6f55;
+      --accent-light: #efe2d4;
+      --green: #6f8b70;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
       background: var(--bg);
-      color: var(--ink);
-      line-height: 1.7;
+      color: var(--text);
+      line-height: 1.6;
+      padding: 16px;
     }
 
-    .page {
-      max-width: 1080px;
+    .container {
+      max-width: 760px;
       margin: 0 auto;
-      padding: 40px 20px 80px;
     }
 
-    .hero {
-      background: linear-gradient(135deg, #fffaf4, #eadccc);
+    header {
+      background: linear-gradient(135deg, #fff, #efe2d4);
       border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 44px;
-      margin-bottom: 28px;
-      box-shadow: 0 20px 50px rgba(70, 45, 25, 0.08);
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      letter-spacing: 0.12em;
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 12px;
+      border-radius: 24px;
+      padding: 24px 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 24px rgba(80, 60, 40, 0.08);
     }
 
     h1 {
-      margin: 0 0 16px;
-      font-size: 36px;
-      line-height: 1.25;
+      font-size: 28px;
+      margin: 0 0 8px;
+      letter-spacing: 0.02em;
     }
 
     h2 {
-      font-size: 24px;
-      margin: 36px 0 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--line);
+      font-size: 22px;
+      margin: 28px 0 12px;
+      padding-left: 10px;
+      border-left: 5px solid var(--accent);
     }
 
     h3 {
       font-size: 18px;
-      margin: 24px 0 10px;
+      margin: 16px 0 10px;
     }
 
     .subtitle {
-      font-size: 18px;
       color: var(--muted);
-      max-width: 780px;
+      margin: 0;
+      font-size: 15px;
     }
 
-    .tagline {
-      margin-top: 24px;
-      padding: 18px 22px;
-      background: rgba(255,255,255,0.56);
-      border-left: 4px solid var(--accent);
-      border-radius: 14px;
-      font-size: 20px;
-      font-weight: 600;
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin: 20px 0;
+    .tag {
+      background: var(--card);
+      border: 1px solid var(--line);
+      color: var(--accent);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
     }
 
     .card {
-      background: var(--paper);
+      background: var(--card);
       border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 10px 30px rgba(70, 45, 25, 0.04);
-    }
-
-    .card strong {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--accent);
+      border-radius: 22px;
+      padding: 16px;
+      margin-bottom: 18px;
+      box-shadow: 0 6px 18px rgba(80, 60, 40, 0.06);
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      background: var(--paper);
-      border-radius: 20px;
       overflow: hidden;
-      border: 1px solid var(--line);
-      margin: 18px 0 26px;
+      border-radius: 16px;
+      font-size: 14px;
+      background: #fff;
     }
 
     th, td {
-      padding: 16px;
       border-bottom: 1px solid var(--line);
-      vertical-align: top;
+      padding: 10px 8px;
+      vertical-align: middle;
       text-align: left;
     }
 
     th {
-      background: var(--soft);
-      color: #4a3a30;
-      font-size: 14px;
-      white-space: nowrap;
-    }
-
-    tr:last-child td {
-      border-bottom: none;
-    }
-
-    .time {
+      background: var(--accent-light);
+      color: #4b3b2f;
       font-weight: 700;
-      color: var(--accent);
       white-space: nowrap;
     }
 
-    .editable {
-      min-height: 44px;
-      padding: 12px 14px;
-      background: #fff;
-      border: 1px dashed #bba895;
-      border-radius: 12px;
-      color: #5d5149;
+    tr:last-child td { border-bottom: none; }
+
+    .mini-table td:first-child,
+    .mini-table th:first-child {
+      width: 34%;
+    }
+
+    .exercise-table th:nth-child(1) { width: 74px; }
+    .exercise-table th:nth-child(2) { width: 22%; }
+    .exercise-table th:nth-child(3) { width: 18%; }
+    .exercise-table th:nth-child(4) { width: 18%; }
+
+    .move-name {
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .en {
+      color: var(--muted);
+      font-size: 12px;
+      display: block;
+      margin-top: 2px;
     }
 
     .note {
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
+    }
+
+    .goal {
+      color: var(--green);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .svg-box {
+      width: 62px;
+      height: 62px;
+      background: #faf6ef;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    svg {
+      width: 56px;
+      height: 56px;
+    }
+
+    .stick {
+      stroke: #4b3b2f;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .head {
+      fill: #4b3b2f;
+    }
+
+    .floor {
+      stroke: #c8b8a8;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+
+    .section-label {
+      display: inline-block;
+      background: var(--accent-light);
+      color: #5a4637;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 10px;
     }
 
     .checklist {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px 18px;
-      margin: 12px 0;
-      padding: 0;
-      list-style: none;
+      gap: 8px;
+      margin-top: 8px;
     }
 
-    .checklist li {
-      background: var(--paper);
+    .check {
+      background: #faf6ef;
       border: 1px solid var(--line);
       border-radius: 14px;
-      padding: 12px 14px;
+      padding: 10px 12px;
+      font-size: 14px;
     }
 
-    .print-actions {
-      position: sticky;
-      bottom: 18px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    button {
-      border: none;
-      border-radius: 999px;
-      padding: 12px 22px;
-      background: var(--ink);
-      color: #fff;
-      cursor: pointer;
-      font-weight: 700;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.16);
-    }
-
-    button.secondary {
-      background: var(--paper);
-      color: var(--ink);
-      border: 1px solid var(--line);
-    }
-
-    @media print {
-      body {
-        background: #fff;
-      }
-
-      .page {
-        max-width: none;
-        padding: 0;
-      }
-
-      .hero, .card, table {
-        box-shadow: none;
-      }
-
-      .print-actions {
-        display: none;
-      }
-    }
-
-    @media (max-width: 800px) {
-      h1 {
-        font-size: 28px;
-      }
-
-      .hero {
-        padding: 28px;
-      }
-
-      .grid, .checklist {
-        grid-template-columns: 1fr;
-      }
-
-      table, thead, tbody, th, td, tr {
-        display: block;
-      }
-
-      th {
-        display: none;
-      }
-
-      td {
-        border-bottom: none;
-        padding: 12px 16px;
-      }
-
-      tr {
-        border-bottom: 1px solid var(--line);
-        padding: 10px 0;
-      }
+    @media (max-width: 560px) {
+      body { padding: 12px; }
+      h1 { font-size: 24px; }
+      h2 { font-size: 20px; }
+      .card { padding: 12px; }
+      table { font-size: 12.5px; }
+      th, td { padding: 8px 6px; }
+      .svg-box { width: 54px; height: 54px; }
+      svg { width: 48px; height: 48px; }
+      .exercise-table th:nth-child(1) { width: 58px; }
     }
   </style>
 </head>
 <body>
-  <main class="page">
-    <section class="hero">
-      <div class="eyebrow">Cinematic Crowdfunding Video Plan</div>
-      <h1 contenteditable="true">星魂印記｜電影感牌卡募資影片拍攝腳本</h1>
-      <p class="subtitle" contenteditable="true">
-        影片方向：用「真實生活感」降低靈性距離，讓觀眾感覺這副牌不是遙遠的宇宙訊息，而是可以放進日常裡的情緒陪伴。
-      </p>
-      <div class="tagline" contenteditable="true">
-        核心概念：當世界很吵的時候，至少還有一個地方，可以慢慢聽見自己。
+  <div class="container">
+    <header>
+      <h1>Functional Training 居家菜單</h1>
+      <p class="subtitle">一週 2 次｜無器材版｜目標：倒立・腹肌・瘦臀腿</p>
+      <div class="tag-row">
+        <span class="tag">每次 35–45 分鐘</span>
+        <span class="tag">3–4 輪</span>
+        <span class="tag">動作間休 20–30 秒</span>
+        <span class="tag">不追求爆操，重點是穩定</span>
       </div>
-    </section>
+    </header>
 
-    <section class="grid">
-      <div class="card">
-        <strong>影片定位</strong>
-        <div contenteditable="true">生活裡的靈魂陪伴，而不是神秘占卜廣告。</div>
-      </div>
-      <div class="card">
-        <strong>目標 TA</strong>
-        <div contenteditable="true">25–35 歲女性、工作壓力大、情緒內耗、喜歡 self-care、journaling、咖啡廳與療癒內容。</div>
-      </div>
-      <div class="card">
-        <strong>視覺關鍵字</strong>
-        <div contenteditable="true">晨光、深夜檯燈、手翻牌、書寫、咖啡、呼吸感、安靜、溫柔、電影感。</div>
-      </div>
-    </section>
-
-    <section>
-      <h2>一、影片主標與搭配文字</h2>
-      <table>
+    <section class="card">
+      <h2>一週安排建議</h2>
+      <table class="mini-table">
         <thead>
           <tr>
-            <th>用途</th>
-            <th>建議文字</th>
-            <th>朋友可修改版本</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>主標題</td>
-            <td>最近的你，還好嗎？</td>
-            <td><div class="editable" contenteditable="true">最近的你，還好嗎？</div></td>
-          </tr>
-          <tr>
-            <td>副標題</td>
-            <td>一副陪你在混亂裡，慢慢聽見自己的牌卡。</td>
-            <td><div class="editable" contenteditable="true">一副陪你在混亂裡，慢慢聽見自己的牌卡。</div></td>
-          </tr>
-          <tr>
-            <td>募資頁 CTA</td>
-            <td>送給正在努力生活，也想重新靠近自己的你。</td>
-            <td><div class="editable" contenteditable="true">送給正在努力生活，也想重新靠近自己的你。</div></td>
-          </tr>
-          <tr>
-            <td>影片結尾字卡</td>
-            <td>星魂印記｜從一張牌開始，找回與自己的連結。</td>
-            <td><div class="editable" contenteditable="true">星魂印記｜從一張牌開始，找回與自己的連結。</div></td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section>
-      <h2>二、45 秒募資影片腳本</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>秒數</th>
-            <th>段落目的</th>
-            <th>拍攝鏡頭</th>
-            <th>旁白／字幕文字</th>
+            <th>星期</th>
+            <th>內容</th>
             <th>備註</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="time">0–3s</td>
-            <td>Hook：先打中情緒</td>
-            <td contenteditable="true">深夜房間，女生坐在地板或床邊，檯燈微亮。鏡頭從側後方慢慢推近，畫面安靜、有一點疲憊感。</td>
-            <td contenteditable="true">最近的你，還好嗎？</td>
-            <td contenteditable="true">不要先露出產品，先讓觀眾覺得「這是在說我」。</td>
-          </tr>
-          <tr>
-            <td class="time">3–8s</td>
-            <td>共鳴：說出 TA 狀態</td>
-            <td contenteditable="true">女生滑手機、停頓、關掉螢幕；或看著窗外發呆。可拍手指停在螢幕上的細節。</td>
-            <td contenteditable="true">有時候，我們不是沒有方向，只是太久沒有停下來。</td>
-            <td contenteditable="true">畫面不要太悲傷，要有「被理解」的安靜感。</td>
-          </tr>
-          <tr>
-            <td class="time">8–14s</td>
-            <td>轉入產品：牌卡出現</td>
-            <td contenteditable="true">手慢慢打開牌盒，牌卡鋪在桌面。用近拍呈現卡面、紙質、手指觸碰牌卡的細節。</td>
-            <td contenteditable="true">星魂印記，不是要替你決定人生，而是陪你重新聽見自己。</td>
-            <td contenteditable="true">產品第一次出現要柔和，不要像硬廣。</td>
-          </tr>
-          <tr>
-            <td class="time">14–22s</td>
-            <td>使用情境：降低門檻</td>
-            <td contenteditable="true">晨光中泡咖啡、坐在桌前抽一張牌、翻閱手冊、在筆記本寫下今日訊息。</td>
-            <td contenteditable="true">每天抽一張牌，像是把一天裡最安靜的五分鐘，留給自己。</td>
-            <td contenteditable="true">這段要拍出「我也可以這樣使用」的生活感。</td>
-          </tr>
-          <tr>
-            <td class="time">22–30s</td>
-            <td>價值說明：不是玄，是覺察</td>
-            <td contenteditable="true">特寫：牌卡上的圖像、手冊文字、筆記本上的一句心情。可加入冥想、敲缽、深呼吸畫面。</td>
-            <td contenteditable="true">它可以是一個提醒、一段陪伴，也可以是一個讓情緒慢慢沉澱的入口。</td>
-            <td contenteditable="true">避免太多宇宙、高維、覺醒等詞，讓一般觀眾更容易靠近。</td>
-          </tr>
-          <tr>
-            <td class="time">30–38s</td>
-            <td>產品亮點：建立購買理由</td>
-            <td contenteditable="true">快速 montage：完整牌卡、神獸插畫、牌盒、手冊、和紙膠帶、筆記本、水晶等回饋品排開。</td>
-            <td contenteditable="true">從牌卡、手冊到收藏配件，陪你建立屬於自己的日常儀式。</td>
-            <td contenteditable="true">這裡可以帶到募資組合，但不要塞太多資訊。</td>
-          </tr>
-          <tr>
-            <td class="time">38–45s</td>
-            <td>CTA：溫柔收尾</td>
-            <td contenteditable="true">女生抽到一張牌後微笑，陽光灑進房間。最後切到牌卡主視覺與募資資訊。</td>
-            <td contenteditable="true">送給正在努力生活，也想重新靠近自己的你。星魂印記，嘖嘖募資中。</td>
-            <td contenteditable="true">結尾要有希望感，不要太沉重。</td>
-          </tr>
+          <tr><td>一</td><td>Functional A</td><td>臀腿＋核心</td></tr>
+          <tr><td>二</td><td>跑步／快走</td><td>20–40 分鐘</td></tr>
+          <tr><td>三</td><td>瑜伽</td><td>伸展＋修復</td></tr>
+          <tr><td>四</td><td>休息</td><td>可散步</td></tr>
+          <tr><td>五</td><td>Functional B</td><td>倒立基礎＋上半身</td></tr>
+          <tr><td>六</td><td>跑步／戶外活動</td><td>舒服呼吸即可</td></tr>
+          <tr><td>日</td><td>完全休息</td><td>恢復很重要</td></tr>
         </tbody>
       </table>
     </section>
 
-    <section>
-      <h2>三、拍攝鏡頭清單 Shot List</h2>
-      <ul class="checklist">
-        <li contenteditable="true">□ 深夜檯燈：女生坐在房間，呈現疲憊與安靜。</li>
-        <li contenteditable="true">□ 手機關閉：從外界噪音回到自己。</li>
-        <li contenteditable="true">□ 打開牌盒：手部特寫，慢慢打開產品。</li>
-        <li contenteditable="true">□ 翻牌：拍手指、牌面、光影落在卡面上。</li>
-        <li contenteditable="true">□ 晨光泡咖啡：建立生活感與儀式感。</li>
-        <li contenteditable="true">□ Journaling：把牌卡訊息寫進筆記本。</li>
-        <li contenteditable="true">□ 冥想／敲缽／深呼吸：強化情緒沉澱。</li>
-        <li contenteditable="true">□ 產品排列：牌卡、手冊、配件完整展示。</li>
-        <li contenteditable="true">□ 窗邊微笑：結尾給觀眾希望感。</li>
-        <li contenteditable="true">□ 募資資訊字卡：專案名稱、平台、CTA。</li>
-      </ul>
-    </section>
+    <section class="card">
+      <h2>Functional A｜臀腿＋核心日 🍑</h2>
+      <span class="section-label">熱身 5 分鐘</span>
+      <table class="mini-table">
+        <thead>
+          <tr><th>動作</th><th>秒數</th><th>目的</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cat Cow</td><td>30 秒</td><td>喚醒脊椎</td></tr>
+          <tr><td>世界最偉大伸展</td><td>30 秒</td><td>髖關節活動</td></tr>
+          <tr><td>深蹲停留</td><td>30 秒</td><td>打開髖部</td></tr>
+          <tr><td>高抬腿</td><td>30 秒</td><td>提高心率</td></tr>
+          <tr><td>肩膀環繞</td><td>30 秒</td><td>肩頸暖身</td></tr>
+        </tbody>
+      </table>
 
-    <section>
-      <h2>四、畫面風格提醒</h2>
-      <div class="grid">
-        <div class="card">
-          <strong>建議多拍</strong>
-          <div contenteditable="true">真實日常、光影、手部細節、呼吸感、書寫、咖啡、晨光、深夜房間。</div>
-        </div>
-        <div class="card">
-          <strong>建議少拍</strong>
-          <div contenteditable="true">過度煙霧、太多星空特效、太玄的運鏡、過度水晶陣、像 AI 靈性廣告的畫面。</div>
-        </div>
-        <div class="card">
-          <strong>影片語氣</strong>
-          <div contenteditable="true">靈性，但不玄；療癒，但不說教；有質感，但要真實。</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>五、朋友回饋區</h2>
-      <table>
+      <h3>主訓練｜做 3–4 輪</h3>
+      <table class="exercise-table">
         <thead>
           <tr>
-            <th>討論項目</th>
-            <th>朋友意見</th>
+            <th>圖</th>
+            <th>動作</th>
+            <th>組數／秒數</th>
+            <th>目標</th>
+            <th>提醒</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>TA 是否符合？</td>
-            <td><div class="editable" contenteditable="true">請填寫：真正想吸引的是誰？</div></td>
+            <td>
+              <div class="svg-box">
+                <svg viewBox="0 0 100 100" aria-label="深蹲示意圖">
+                  <line class="floor" x1="12" y1="84" x2="88" y2="84" />
+                  <circle class="head" cx="50" cy="20" r="7" />
+                  <path class="stick" d="M50 28 L45 48 L30 62" />
+                  <path class="stick" d="M45 48 L68 62" />
+                  <path class="stick" d="M30 62 L22 82" />
+                  <path class="stick" d="M68 62 L80 82" />
+                  <path class="stick" d="M47 38 L28 42" />
+                  <path class="stick" d="M47 38 L68 42" />
+                </svg>
+              </div>
+            </td>
+            <td><span class="move-name">深蹲</span><span class="en">Squat</span></td>
+            <td>12–15 下</td>
+            <td><span class="goal">臀腿線條</span></td>
+            <td class="note">重心放腳跟，臀部往後坐</td>
           </tr>
+
           <tr>
-            <td>影片要更偏生活感還是靈性宇宙感？</td>
-            <td><div class="editable" contenteditable="true">請填寫：希望比例，例如生活感 70%／靈性 30%。</div></td>
+            <td>
+              <div class="svg-box">
+                <svg viewBox="0 0 100 100" aria-label="保加利亞分腿蹲示意圖">
+                  <line class="floor" x1="10" y1="84" x2="90" y2="84" />
+                  <rect x="68" y="58" width="22" height="10" rx="3" fill="#c8b8a8" />
+                  <circle class="head" cx="42" cy="18" r="7" />
+                  <path class="stick" d="M42 26 L40 48" />
+                  <path class="stick" d="M40 48 L25 65 L20 84" />
+                  <path class="stick" d="M40 48 L62 62 L78 62" />
+                  <path class="stick" d="M40 36 L25 45" />
+                  <path class="stick" d="M40 36 L56 45" />
+                </svg>
+              </div>
+            </td>
+            <td><span class="move-name">保加利亞分腿蹲</span><span class="en">Bulgarian Split Squat</span></td>
+            <td>左右各 10 下</td>
+            <td><span class="goal">瘦臀腿</span></td>
+            <td class="note">後腳放沙發，前腳踩穩</td>
           </tr>
+
           <tr>
-            <td>哪些產品亮點一定要拍？</td>
-            <td><div class="editable" contenteditable="true">請填寫：牌卡、手冊、神獸、0號牌、回饋品等。</div></td>
+            <td>
+              <div class="svg-box">
+                <svg viewBox="0 0 100 100" aria-label="臀橋示意圖">
+                  <line class="floor" x1="10" y1="78" x2="90" y2="78" />
+                  <circle class="head" cx="24" cy="70" r="7" />
+                  <path class="stick" d="M31 68 L48 52 L70 64" />
+                  <path class="stick" d="M70 64 L80 78" />
+                  <path class="stick" d="M48 52 L58 78" />
+                  <path class="stick" d="M36 64 L28 78" />
+                </svg>
+              </div>
+            </td>
+            <td><span class="move-name">臀橋</span><span class="en">Glute Bridge</span></td>
+            <td>15 下＋停 10 秒</td>
+            <td><span class="goal">臀型</span></td>
+            <td class="note">上推時夾臀，不用拱腰</td>
           </tr>
+
           <tr>
-            <td>哪些文字不能用或想避開？</td>
-            <td><div class="editable" contenteditable="true">請填寫：例如不想太玄、不想太焦慮、不想太商業。</div></td>
+            <td>
+              <div class="svg-box">
+                <svg viewBox="0 0 100 100" aria-label="登山者示意圖">
+                  <line class="floor" x1="10" y1="82" x2="90" y2="82" />
+                  <circle class="head" cx="76" cy="34" r="7" />
+                  <path class="stick" d="M70 42 L48 58 L25 82" />
+                  <path class="stick" d="M48 58 L68 72 L86 82" />
+                  <path class="stick" d="M58 50 L78 82" />
+                  <path class="stick" d="M58 50 L88 82" />
+                </svg>
+              </div>
+            </td>
+            <td><span class="move-name">登山者</span><span class="en">Mountain Climber</span></td>
+            <td>30 秒</td>
+            <td><span class="goal">核心燃脂</span></td>
+            <td class="note">核心收緊，不聳肩</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="svg-box">
+                <svg viewBox="0 0 100 100" aria-label="Dead Bug 示意圖">
+                  <line class="floor" x1="12" y1="76" x2="88" y2="76" />
+                  <circle class="head" cx="42" cy="70" r="7" />
+                  <path class="stick" d="M49 68 L60 58" />
+                  <path class="stick" d="M60 58 L72 42" />
+                  <path class="stick" d="M58 60 L74 70" />
+                  <path class="stick" d="M58 60 L44 42" />
+                  <path class="stick" d="M55 62 L35 50" />
+                </svg>
+              </div>
+            </td>
+            <td><span class="move-name">Dead Bug</span><span class="en">Dead Bug</span></td>
+            <td>左右各 10 下</td>
+            <td><span class="goal">深層腹肌</span></td>
+            <td class="note">下背貼地，慢慢控制</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="svg-box">
+                <svg viewBox="0 0 100 100" aria-label="平板撐示意圖">
+                  <line class="floor" x1="10" y1="78" x2="90" y2="78" />
+                  <circle class="head" cx="78" cy="54" r="7" />
+                  <path class="stick" d="M70 58 L48 60 L24 72" />
+                  <path class="stick" d="M48 60 L66 78" />
+                  <path class="stick" d="M24 72 L18 78" />
+                  <path class="stick" d="M70 60 L82 78" />
+                </svg>
+              </div>
+            </td>
+            <td><span class="move-name">平板撐</span><span class="en">Plank</span></td>
+            <td>30–45 秒</td>
+            <td><span class="goal">核心穩定</span></td>
+            <td class="note">肋骨收，骨盆不要塌</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>收操 5 分鐘</h3>
+      <table class="mini-table">
+        <thead><tr><th>動作</th><th>秒數</th><th>感受位置</th></tr></thead>
+        <tbody>
+          <tr><td>鴿式伸展</td><td>30 秒／邊</td><td>臀部</td></tr>
+          <tr><td>腿後側伸展</td><td>30 秒／邊</td><td>大腿後側</td></tr>
+          <tr><td>臀部伸展</td><td>30 秒／邊</td><td>梨狀肌、髖部</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Functional B｜倒立基礎＋上半身日 🤸🏻‍♀️</h2>
+      <span class="section-label">熱身 5 分鐘</span>
+      <table class="mini-table">
+        <thead>
+          <tr><th>動作</th><th>秒數</th><th>目的</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>肩膀繞圈</td><td>30 秒</td><td>肩關節暖身</td></tr>
+          <tr><td>Down Dog</td><td>30 秒</td><td>肩背＋腿後側</td></tr>
+          <tr><td>手腕伸展</td><td>30 秒</td><td>保護手腕</td></tr>
+          <tr><td>Hollow Hold</td><td>20 秒</td><td>核心張力</td></tr>
+        </tbody>
+      </table>
+
+      <h3>主訓練｜做 3–4 輪</h3>
+      <table class="exercise-table">
+        <thead>
+          <tr>
+            <th>圖</th>
+            <th>動作</th>
+            <th>組數／秒數</th>
+            <th>目標</th>
+            <th>提醒</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="svg-box">
+                <svg viewBox="0 0 100 100" aria-label="Pike Push Up 示意圖">
+                  <line class="floor" x1="10" y1="82" x2="90" y2="82" />
+                  <circle class="head" cx="36" cy="66" r="7" />
+                  <path class="stick" d="M42 64 L52 40 L76 82" />
+                  <path class="stick" d="M52 40 L24 82" />
+                  <path class="stick" d="M42 68 L30 82" />
+                  <path class="stick" d="M42 68 L50 82" />
+                </svg>
+              </div>
+            </td>
+            <td><span class="move-name">Pike Push Up</span><span class="en">Pike Push Up</span></td>
+            <td>8–10 下</td>
+            <td><span class="goal">倒立肩推力</span></td>
+            <td class="note">臀部抬高，頭往前下方</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="svg-box">
+                <svg viewBox="0 0 100 100" aria-label="Bear Hold 示意圖">
+                  <line class="floor" x1="10" y1="82" x2="90" y2="82" />
+                  <circle class="head" cx="74" cy="42" r="7" />
+                  <path class="stick" d="M68 50 L48 58 L28 76" />
+                  <path class="stick" d="M48 58 L66 76" />
+                  <path class="stick" d="M48 58 L38 76" />
+                  <path class="stick" d="M68 52 L82 76" />
+                </svg>
+              </div>
+            </td>
+            <td><span class="move-name">Bear Crawl Hold</span><span class="en">Bear Hold</span></td>
+            <td>30 秒</td>
+            <td><span class="goal">肩膀穩定</span></td>
+            <td class="note">膝蓋離地，背打平</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="svg-box">
+                <svg viewBox="0 0 100 100" aria-label="靠牆倒立示意圖">
+                  <line class="floor" x1="18" y1="86" x2="86" y2="86" />
+                  <line class="floor" x1="86" y1="14" x2="86" y2="86" />
+                  <circle class="head" cx="48" cy="70" r="7" />
+                  <path class="stick" d="M50 64 L56 44 L70 22" />
+                  <path class="stick" d="M56 44 L84 24" />
+                  <path class="stick" d="M50 64 L34 86" />
+                  <path class="stick" d="M50 64 L62 86" />
+                </svg>
+              </div>
+            </td>
+            <td><span class="move-name">靠牆抬腿</span><span class="en">Wall Hold</span></td>
+            <td>30 秒</td>
+            <td><span class="goal">倒立基礎</span></td>
+            <td class="note">先習慣倒立感，不急著踢上去</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="svg-box">
+                <svg viewBox="0 0 100 100" aria-label="Hollow Hold 示意圖">
+                  <line class="floor" x1="10" y1="78" x2="90" y2="78" />
+                  <circle class="head" cx="28" cy="66" r="7" />
+                  <path class="stick" d="M35 66 L52 70 L78 62" />
+                  <path class="stick" d="M40 66 L24 50" />
+                  <path class="stick" d="M42 67 L28 46" />
+                  <path class="stick" d="M60 68 L82 56" />
+                </svg>
+              </div>
+            </td>
+            <td><span class="move-name">Hollow Body Hold</span><span class="en">Hollow Hold</span></td>
+            <td>20–30 秒</td>
+            <td><span class="goal">倒立核心</span></td>
+            <td class="note">下背貼地，腳慢慢伸直</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="svg-box">
+                <svg viewBox="0 0 100 100" aria-label="Shoulder Tap 示意圖">
+                  <line class="floor" x1="10" y1="82" x2="90" y2="82" />
+                  <circle class="head" cx="76" cy="44" r="7" />
+                  <path class="stick" d="M70 52 L48 58 L24 82" />
+                  <path class="stick" d="M48 58 L68 82" />
+                  <path class="stick" d="M68 54 L54 42" />
+                  <path class="stick" d="M48 58 L86 82" />
+                </svg>
+              </div>
+            </td>
+            <td><span class="move-name">Shoulder Tap</span><span class="en">Plank Shoulder Tap</span></td>
+            <td>左右各 10 下</td>
+            <td><span class="goal">核心抗晃</span></td>
+            <td class="note">身體不要左右晃</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="svg-box">
+                <svg viewBox="0 0 100 100" aria-label="Boat Hold 示意圖">
+                  <line class="floor" x1="10" y1="82" x2="90" y2="82" />
+                  <circle class="head" cx="42" cy="40" r="7" />
+                  <path class="stick" d="M44 48 L54 64 L78 42" />
+                  <path class="stick" d="M54 64 L26 44" />
+                  <path class="stick" d="M54 64 L34 82" />
+                  <path class="stick" d="M54 64 L76 82" />
+                </svg>
+              </div>
+            </td>
+            <td><span class="move-name">Boat Hold</span><span class="en">Boat Pose</span></td>
+            <td>30 秒</td>
+            <td><span class="goal">腹肌線條</span></td>
+            <td class="note">胸口打開，腹部收緊</td>
           </tr>
         </tbody>
       </table>
     </section>
 
-    <div class="print-actions">
-      <button onclick="window.print()">列印／匯出 PDF</button>
-      <button class="secondary" onclick="document.designMode = document.designMode === 'on' ? 'off' : 'on'">切換整頁編輯</button>
-    </div>
-  </main>
+    <section class="card">
+      <h2>訓練強度怎麼調整？</h2>
+      <table>
+        <thead>
+          <tr><th>狀態</th><th>做法</th><th>判斷方式</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>太輕鬆</td><td>從 3 輪加到 4 輪</td><td>做完還很有餘力</td></tr>
+          <tr><td>剛剛好</td><td>維持 3 輪</td><td>累但動作不變形</td></tr>
+          <tr><td>太吃力</td><td>每動作減少 20%</td><td>核心撐不住、腰開始代償</td></tr>
+          <tr><td>想練倒立</td><td>B 日多加 5 分鐘靠牆練習</td><td>手腕肩膀無疼痛</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>跑步搭配建議 🏃‍♀️</h2>
+      <table>
+        <thead>
+          <tr><th>階段</th><th>內容</th><th>重點</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>第 1–2 週</td><td>跑 2 分鐘＋走 1 分鐘，共 20–25 分鐘</td><td>建立習慣</td></tr>
+          <tr><td>第 3–4 週</td><td>跑 4 分鐘＋走 1 分鐘，共 25–30 分鐘</td><td>呼吸舒服</td></tr>
+          <tr><td>第 5 週後</td><td>連續慢跑 20–40 分鐘</td><td>不追配速</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>小提醒 🌱</h2>
+      <div class="checklist">
+        <div class="check">✅ 腹肌不是每天狂練，而是核心穩定＋飲食＋日常活動量。</div>
+        <div class="check">✅ 瘦臀腿不要只做有氧，臀腿肌力要保留，線條才會好看。</div>
+        <div class="check">✅ 倒立先練肩膀、手腕、核心，不要一開始就硬踢牆。</div>
+        <div class="check">✅ 做完如果腰痠大於腹部痠，通常代表核心沒有收好。</div>
+      </div>
+    </section>
+  </div>
 </body>
 </html>
